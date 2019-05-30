@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>resume</title>
-    <link rel="stylesheet" href="style_1.css">
+    <link rel="stylesheet" href="style_3.css">
 </head>
 
 <body>
-    <h1 id="ht">简历</h1>
-    <div id="stuff">
-        <div id="basic">
+    <header>
+        <h1>简历</h1>
+    </header>
+    <section>
+        <div id="basic" class="module">
             <h2 class="titl">基础信息</h2>
             <p class="detail">
                 <span class="item">姓名</span><span class="content">张三</span>
@@ -18,7 +20,7 @@
                 <span class="item">应聘职位</span><span class="content">Web前端工程师</span>
             </p>
         </div>
-        <div id="conn">
+        <div id="conn" class="module">
             <h2 class="titl">联系方式</h2>
             <p class="detail">
                 <span class="item">手机</span><span class="content">12312341234</span>
@@ -26,33 +28,46 @@
                 <span class="item">个人主页</span><a href="http://www.baidu.com" class="content">Github</a>
             </p>
         </div>
-        <div id="ability">
+        <div id="ability" class="module">
             <h2 class="titl">能力描述</h2>
-            <dl class="detail">
-                <dt class="clau">技术能力</dt>
-                <dd class="desc">熟练掌握HTML,CSS,JavaScript</dd>
-                <dt class="clau">综合能力</dt>
-                <dd class="desc">良好的沟通，主动积极，努力勤奋</dd>
-            </dl>
+            <div class="detail">
+                <dl class="one-thing">
+                    <dt class="clau">技术能力</dt>
+                    <dd class="desc">熟练掌握HTML,CSS,JavaScript</dd>
+                </dl>
+                <dl class="one-thing">
+                    <dt class="clau">综合能力</dt>
+                    <dd class="desc">良好的沟通，主动积极，努力勤奋</dd>
+                </dl>
+            </div>
         </div>
-        <div id="study">
+        <div id="study" class="module">
             <h2 class="titl">教育经历</h2>
-            <dl class="detail">
-                <dt class="clau">本科</dt>
-                <dd class="desc">百度前端技术学院小薇学院</dd>
-                <dt class="clau">研究生</dt>
-                <dd class="desc">百度前端技术学院大斌学院</dd>
-            </dl>
+            <div class="detail">
+                <dl class="one-thing">
+                    <dt class="clau">本科</dt>
+                    <dd class="desc">百度前端技术学院小薇学院</dd>
+                </dl>
+                <dl class="one-thing">
+                    <dt class="clau">研究生</dt>
+                    <dd class="desc">百度前端技术学院大斌学院</dd>
+                </dl>
+            </div>
         </div>
-        <div id="pros">
+        <div id="pros" class="module">
             <h2 class="titl">项目经历</h2>
-            <dt class="clau">小度小度</dt>
-            <dd class="desc">作为前端工程师角色参与了ABC组件的开发</dd>
-            <dt class="clau">SAN Doc</dt>
-            <dd class="desc">作为文档工程师参与了SAN Doc编写</dd>
-            </dl>
+            <div class="detail">
+                <dl class="one-thing">
+                    <dt class="clau">小度小度</dt>
+                    <dd class="desc">作为前端工程师角色参与了ABC组件的开发</dd>
+                </dl>
+                <dl class="one-thing">
+                    <dt class="clau">SAN Doc</dt>
+                    <dd class="desc">作为文档工程师参与了SAN Doc编写</dd>
+                </dl>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 </html>

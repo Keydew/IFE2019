@@ -1,0 +1,62 @@
+/*清除h1、h2、p的margin*/
+h1,
+h2,
+p,
+dl {
+    margin: 0;
+}
+
+/*增加标题样式 */
+header {
+    background-color: #888;
+    height: 100px;
+}
+
+header h1 {
+    color: #fff;
+    line-height: 100px;
+    text-indent: 2em;
+}
+
+/*设置div及titl的样式*/
+.module {
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: row;
+    -webkit-flex-direction: row;
+
+    border:1px solid #eee;
+}
+
+.module .titl {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    line-height: 150px;
+
+    background-color: #ccc;
+}
+.module .detail{
+    padding:10px;
+}
+
+.item {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.content {
+    margin-right: 30px;
+}
+
+.desc {
+    margin-left: 0;
+    display: inline;
+}
+
+.clau {
+    margin-top: 1em;
+    font-weight: bold;
+    display: inline;
+}

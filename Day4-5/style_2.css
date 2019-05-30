@@ -1,3 +1,23 @@
+/*增加标题样式 */
+header {
+    background-color: #82AAFE;
+    height:720px;
+    width:200px;
+    float: left;
+}
+
+header h1 {
+    color: #fff;
+    text-align: center;
+    margin-top:50px;
+}
+/***************/
+/*增加section样式*/
+section{
+	margin-left:200px;
+	padding:20px;
+}
+
 .item {
     margin-right: 10px;
     font-weight: bold;
@@ -13,4 +33,5 @@
 
 .clau {
     margin-top: 1em;
+    font-weight: bold;
 }
