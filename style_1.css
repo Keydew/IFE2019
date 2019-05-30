@@ -1,0 +1,16 @@
+.item {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.content {
+    margin-right: 30px;
+}
+
+.desc {
+    margin-left: 0;
+}
+
+.clau {
+    margin-top: 1em;
+}
