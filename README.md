@@ -1,2 +1,2 @@
 # IFE2019
-Learn more about front-end
+努力学习前端知识~
