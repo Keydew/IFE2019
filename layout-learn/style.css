@@ -1,0 +1,128 @@
+/*消除原有的margin/padding*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*一些全局通用的样式*/
+.panel {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+/*头部样式*/
+header {
+    background-color: #373737;
+    color: #fff;
+
+    height: 80px;
+}
+
+header h1 {
+    line-height: 80px;
+}
+
+header .links {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+header li {
+    padding: 5px;
+}
+
+header li a {
+    color: #fff;
+}
+
+/*banner样式 */
+.banner {
+    background-color: #7AD670;
+    height: 300px;
+}
+
+.ops {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.ops li {
+    width: 30px;
+    height: 35px;
+    margin-right: 5px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #555;
+    color: #555;
+
+    text-align: center;
+    vertical-align: super;
+    line-height: 35px;
+}
+
+.ops li:nth-child(2) {
+    height: 55px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    line-height: 75px;
+}
+
+/*设置nav导航的样式 */
+nav {
+    height: 50px;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+nav li {
+    height: 50px;
+    width: 100px;
+
+    text-align: center;
+    line-height: 50px;
+
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+nav li:first-child {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+/*设置主体内容模块的样式 */
+#home {
+    display: flex;
+    flex-flow: wrap;
+}
+
+#home article {
+    width: auto;
+    margin: 5px;
+    padding: 80px;
+    text-align: center;
+
+    border: 1px solid #ccc;
+}
+
+/*设置页脚样式*/
+footer {
+    background-color: #555;
+    height: 300px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+}
