@@ -1,0 +1,569 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic"
+}
+
+ul {
+    list-style-type: none
+}
+
+body {
+    width: 1600px
+}
+
+.panel,
+.panel-head,
+.panel-sec {
+    width: 970px;
+    margin: 0 auto
+}
+
+.panel-head {
+    padding: 150px 0
+}
+
+.panel-sec {
+    padding: 80px 0
+}
+
+.flex-list {
+    display: flex
+}
+
+.spli-text,
+.normal-btn,
+.white-btn,
+.tran-btn,
+.black-btn {
+    letter-spacing: .1em
+}
+
+.normal-btn,
+.white-btn,
+.tran-btn,
+.black-btn {
+    font-weight: bold
+}
+
+.white-btn {
+    border-radius: 2px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #000
+}
+
+.tran-btn {
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: #fff
+}
+
+.black-btn {
+    border-radius: 2px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff
+}
+
+.trn-text {
+    line-height: 1.5em;
+    color: rgba(255, 255, 255, 0.7)
+}
+
+.sec-title {
+    text-align: center
+}
+
+.normal-text,
+.trn-text {
+    font-size: 20px
+}
+
+.small-text {
+    font-size: 12px
+}
+
+header {
+    background-image: url("image/cliff.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+    height: 900px;
+    overflow: hidden
+}
+
+header h1 {
+    font-weight: 100;
+    font-size: 60px;
+    text-align: center;
+    color: #fff;
+    margin: 80px 0
+}
+
+header .head-text {
+    width: 770px;
+    margin: 80px auto
+}
+
+header .signbox {
+    padding: 50px;
+    margin-top: 100px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3)
+}
+
+header .sign-title {
+    margin-bottom: 10px
+}
+
+header .sign-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6)
+}
+
+header .sign-form {
+    margin-top: 40px
+}
+
+header .sign-form input {
+    margin-right: 30px;
+    height: 50px
+}
+
+header .sign-form #account,
+header .sign-form #password {
+    width: 240px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: #fff;
+    padding: 0 25px
+}
+
+header .sign-form #sign-up {
+    width: 125px
+}
+
+#sec-awesome .sec-subtitle {
+    font-weight: bold
+}
+
+#sec-awesome h1 {
+    font-weight: 100;
+    font-size: 40px;
+    text-align: center;
+    color: #000;
+    margin: 20px 0
+}
+
+#sec-awesome .item-list {
+    flex-wrap: wrap
+}
+
+#sec-awesome .item-list img {
+    float: left;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px
+}
+
+#sec-awesome .item-list li {
+    width: 50%;
+    padding: 40px 0;
+    box-sizing: border-box
+}
+
+#sec-awesome .item-list li:nth-child(even) {
+    padding-left: 40px
+}
+
+#sec-awesome .item-list li:nth-child(odd) {
+    padding-right: 40px
+}
+
+#sec-awesome .item-list li .li-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px
+}
+
+#sec-support {
+    background-image: url("image/forest.jpg");
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden
+}
+
+#sec-support .support-info {
+    display: inline-block;
+    margin: 80px 0
+}
+
+#sec-support .support-info article {
+    width: 380px
+}
+
+#sec-support .support-info article h1 {
+    font-weight: 100;
+    font-size: 40px;
+    text-align: left;
+    color: #fff;
+    margin: 40px 0
+}
+
+#sec-support .support-info article p {
+    margin: 40px 0;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: left
+}
+
+#sec-support .support-info #check-feature,
+#sec-support .support-info #try-product {
+    margin-right: 30px;
+    width: 240px;
+    height: 60px
+}
+
+#sec-support .ipad-div {
+    display: inline-block;
+    margin: auto 0;
+    padding: 30px;
+    position: absolute;
+    right: -180px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3)
+}
+
+#sec-support .ipad-div>* {
+    vertical-align: middle
+}
+
+#sec-support .ipad-div .ipad-circle {
+    display: inline-block;
+    margin: auto 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3)
+}
+
+#sec-support .ipad-div .ipad-content {
+    padding: 50px;
+    display: inline-block;
+    background-color: #fff
+}
+
+#sec-support .ipad-div .ipad-content article h1 {
+    font-weight: 100;
+    font-size: 30px;
+    text-align: center;
+    color: #000;
+    margin: 20px 0
+}
+
+#sec-support .ipad-div .ipad-content article p {
+    margin: 40px 0;
+    color: grey;
+    text-align: center
+}
+
+#sec-support .ipad-div .ipad-content .support-list {
+    margin: 70px 0
+}
+
+#sec-support .ipad-div .ipad-content .support-list li {
+    margin-right: 25px;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px 1px #EBEBEB;
+    width: 175px;
+    height: 250px
+}
+
+#sec-support .ipad-div .ipad-content .support-list li img {
+    width: 100%
+}
+
+#sec-support .ipad-div .ipad-content .support-list li h3,
+#sec-support .ipad-div .ipad-content .support-list li p {
+    margin: 10px
+}
+
+#sec-product {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+#sec-product h1 {
+    font-weight: 100;
+    font-size: 40px;
+    text-align: center;
+    color: #000;
+    margin: 10px 0
+}
+
+#sec-product .product-list {
+    margin-top: 70px
+}
+
+#sec-product .product-list li {
+    text-align: center;
+    line-height: 1.5em;
+    margin-right: 85px
+}
+
+#sec-product .product-list li:last-child {
+    margin-right: 0
+}
+
+#sec-product .product-list li img {
+    width: 150px
+}
+
+#sec-image {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+#sec-image li {
+    overflow: hidden;
+    margin-bottom: 80px
+}
+
+#sec-image li:nth-child(odd) img {
+    float: left;
+    margin-right: 75px
+}
+
+#sec-image li:nth-child(even) img {
+    float: right;
+    margin-left: 75px
+}
+
+#sec-image li:last-child {
+    margin-bottom: 0
+}
+
+#sec-image li h3 {
+    line-height: 1.5em;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    color: #000;
+    margin: 20px 0
+}
+
+#sec-image li p {
+    line-height: 1.5em
+}
+
+#sec-crew {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+#sec-crew article {
+    padding: 0 120px;
+    padding-bottom: 40px
+}
+
+#sec-crew article h1 {
+    font-weight: 100;
+    font-size: 40px;
+    text-align: center;
+    color: #000;
+    margin: 10px 0
+}
+
+#sec-crew article p {
+    margin: 0 0;
+    color: #000;
+    text-align: center
+}
+
+#sec-crew table #figure1 {
+    background-image: url("image/figure1.jpeg")
+}
+
+#sec-crew table #figure2 {
+    background-image: url("image/figure2.png")
+}
+
+#sec-crew table #figure3 {
+    background-image: url("image/ovilia.png")
+}
+
+#sec-crew table #figure4 {
+    background-image: url("image/figure4.png")
+}
+
+#sec-crew table td {
+    width: 470px;
+    height: 340px
+}
+
+#sec-crew table td .crew-info {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+#sec-crew table td .crew-info .cr-name {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    margin: 10px 0
+}
+
+#sec-crew table td .crew-info .cr-position {
+    color: rgba(255, 255, 255, 0.7)
+}
+
+#sec-crew table td .crew-info ul {
+    padding: 20px 0
+}
+
+#sec-crew table td .crew-info img {
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 15px
+}
+
+#sec-crew table td:hover .crew-info {
+    visibility: visible
+}
+
+#sec-contact .panel-sec {
+    display: flex
+}
+
+#sec-contact .panel-sec .form-contact {
+    width: 470px;
+    box-sizing: border-box;
+    flex: none;
+    padding: 40px;
+    padding-top: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+#sec-contact .panel-sec .form-contact form h3 {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    margin: 40px 0
+}
+
+#sec-contact .panel-sec .form-contact form>* {
+    box-sizing: border-box
+}
+
+#sec-contact .panel-sec .form-contact form input {
+    width: 100%;
+    height: 50px;
+    margin: 20px 0
+}
+
+#sec-contact .panel-sec .form-contact form #msg-ta {
+    width: 100%;
+    resize: none;
+    padding: 25px
+}
+
+#sec-contact .panel-sec .form-contact form input[type="text"],
+#sec-contact .panel-sec .form-contact form textarea {
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    color: #000;
+    padding: 0 25px
+}
+
+#sec-contact .panel-sec .info-contact {
+    margin-left: 120px
+}
+
+#sec-contact .panel-sec .info-contact article h1 {
+    font-weight: 100;
+    font-size: 40px;
+    text-align: left;
+    color: #000;
+    margin: 40px 0
+}
+
+#sec-contact .panel-sec .info-contact article p {
+    margin: 0 0;
+    color: #000;
+    text-align: left
+}
+
+#sec-contact .panel-sec .info-contact .contact-list {
+    margin: 80px 0
+}
+
+#sec-contact .panel-sec .info-contact .contact-list li {
+    overflow: hidden
+}
+
+#sec-contact .panel-sec .info-contact .contact-list li p {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    color: #000;
+    margin: 10px 0
+}
+
+#sec-contact .panel-sec .info-contact .contact-list li:before {
+    content: "";
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px
+}
+
+#sec-contact .panel-sec .info-contact .contact-list #address-li:before {
+    background-image: url("image/locate.png")
+}
+
+#sec-contact .panel-sec .info-contact .contact-list #tel-li:before {
+    background-image: url("image/tel.png")
+}
+
+#sec-contact .panel-sec .info-contact .contact-list #mail-li:before {
+    background-image: url("image/email.png")
+}
+
+footer {
+    background-color: #000;
+    padding: 80px 210px
+}
+
+footer dl {
+    width: 25%
+}
+
+footer dl>* {
+    margin: 30px 0
+}
+
+footer dl dt {
+    color: #fff
+}
+
+footer dl a,
+footer dl dd {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+footer dl img {
+    width: 30px
+}
+
+/*# sourceMappingURL=style.css.map */
