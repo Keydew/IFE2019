@@ -1,0 +1,735 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Arial"
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%
+}
+
+body {
+    display: flex;
+    overflow: hidden
+}
+
+body>* {
+    height: 100%;
+    box-sizing: border-box
+}
+
+ul {
+    list-style-type: none
+}
+
+a {
+    text-decoration: none
+}
+
+.right-tag {
+    float: right
+}
+
+.checked-msg {
+    position: relative
+}
+
+.checked-msg .person-name {
+    color: #2399f1
+}
+
+.checked-msg .person-name:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background: #2399f1;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+.checked-msg .brief-msg {
+    position: relative;
+    padding-right: 30px
+}
+
+.checked-msg .brief-msg:after {
+    content: "4";
+    display: inline-block;
+    color: #fff;
+    background-color: #249af2;
+    border-radius: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 12px)
+}
+
+.checked-msg:before {
+    content: "";
+    width: 3px;
+    height: 100%;
+    display: block;
+    background: #2399f1;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.brief-msg {
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 0;
+    color: #585d68
+}
+
+.btn-bg {
+    background-image: -webkit-linear-gradient(bottom, #f2f4f7, #fff);
+    background-image: -moz-linear-gradient(bottom, #f2f4f7, #fff)
+}
+
+::-moz-progress-bar {
+    border-radius: 2px;
+    background: -moz-linear-gradient(left, #7f5ce5, #9c8de3)
+}
+
+::-webkit-progress-value {
+    border-radius: 2px;
+    background: -webkit-linear-gradient(left, #7f5ce5, #9c8de3)
+}
+
+::-webkit-progress-bar {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1)
+}
+
+#main-menu {
+    position: relative;
+    background-color: #1d2531;
+    padding-bottom: 40px;
+    flex: none
+}
+
+#main-menu ul {
+    max-height: 100%;
+    position: relative
+}
+
+#main-menu ul .checked-menu:before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    display: block;
+    background: #2399f1;
+    background-size: cover;
+    margin: 27px 0;
+    border-radius: 2px;
+    position: absolute;
+    left: -2px
+}
+
+#main-menu li {
+    margin: 20px
+}
+
+#main-menu li img {
+    width: 60px
+}
+
+#main-menu li #btn-add-menu {
+    display: block;
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 54px;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 35px
+}
+
+#main-menu footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+#main-menu footer img {
+    width: 16px
+}
+
+#main-menu footer a:not(:last-child) {
+    margin-right: 15px
+}
+
+#sub-menu {
+    position: relative;
+    background-color: #222c3c;
+    width: 250px;
+    flex: none;
+    padding-bottom: 60px
+}
+
+#sub-menu ul {
+    max-height: 100%;
+    overflow: auto;
+    position: relative
+}
+
+#sub-menu ul dl {
+    margin: 0 25px;
+    padding: 15px 0
+}
+
+#sub-menu ul dl:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+}
+
+#sub-menu ul dl>* {
+    padding: 5px 0;
+    line-height: 24px
+}
+
+#sub-menu ul dl .msg-tag {
+    display: inline-block;
+    color: #fff;
+    background-color: #249af2;
+    border-radius: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px
+}
+
+#sub-menu ul dl .alert-tag {
+    display: inline-block;
+    color: #fff;
+    background-color: #e64428;
+    border-radius: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px
+}
+
+#sub-menu ul dl .checked-menu::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    display: block;
+    background: #2399f1;
+    background-size: cover;
+    margin: 10px 0;
+    border-radius: 2px;
+    position: absolute;
+    left: -2px
+}
+
+#sub-menu ul dl .checked-menu a {
+    color: #fff
+}
+
+#sub-menu ul dl dt {
+    color: rgba(255, 255, 255, 0.2)
+}
+
+#sub-menu ul dl dt a img {
+    height: 18px
+}
+
+#sub-menu ul dl dd a {
+    color: rgba(255, 255, 255, 0.6)
+}
+
+#sub-menu ul #menu-product dd a:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: transparent;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 10px
+}
+
+#sub-menu ul #menu-product dd #submenu-book:before {
+    background-image: url("image/icon-book.png")
+}
+
+#sub-menu ul #menu-product dd #submenu-tutorial:before {
+    background-image: url("image/icon-video.png")
+}
+
+#sub-menu ul #menu-product dd #submenu-stock:before {
+    background-image: url("image/icon-image.png")
+}
+
+#sub-menu ul #menu-product dd #submenu-infogra:before {
+    background-image: url("image/icon-analy.png")
+}
+
+#sub-menu footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #fff
+}
+
+#sub-menu footer>* {
+    margin: 5px 0;
+    width: 100%
+}
+
+#sub-menu footer progress {
+    height: 5px;
+    border-radius: 2px;
+    border: none;
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.1)
+}
+
+main {
+    flex: 1;
+    min-width: 400px
+}
+
+main header {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+main header h1 {
+    line-height: 80px;
+    font-size: 25px;
+    font-weight: 100;
+    padding-left: 30px
+}
+
+main header .person-div {
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: absolute;
+    right: 30px;
+    top: 15px
+}
+
+main header .person-div .person-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2399f1
+}
+
+main header .person-div .person-position {
+    color: rgba(0, 0, 0, 0.3)
+}
+
+main header .person-div .right-tag {
+    color: #7f8fa4;
+    font-weight: bold
+}
+
+main header .person-div .sculpture {
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex: none
+}
+
+main header .person-div .person-info {
+    height: 100%;
+    line-height: 1.4em;
+    flex: 1
+}
+
+main header .person-div .right-tag {
+    flex: none
+}
+
+main header .person-div .sculp-div:after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    display: block;
+    background: #fff;
+    background-size: cover;
+    box-sizing: border-box;
+    border: 3px solid #38a76a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #fff;
+    position: absolute;
+    bottom: 3px;
+    left: 33px
+}
+
+main header .person-div .down-btn {
+    width: 15px;
+    height: 15px
+}
+
+main #main-div {
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex
+}
+
+main aside {
+    width: 400px;
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    flex: none
+}
+
+main #search-div {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative
+}
+
+main #search-div input {
+    width: 100%;
+    height: 100%;
+    padding-left: 45px;
+    padding-right: 70px;
+    box-sizing: border-box;
+    border: none
+}
+
+main #search-div #search-btn:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url("image/icon-search.png");
+    background-size: cover;
+    position: absolute;
+    top: 25px;
+    right: 40px
+}
+
+main #msg-list {
+    overflow-y: auto;
+    height: calc(100% - 70px)
+}
+
+main #msg-list article {
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+main #msg-list article .person-div {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px
+}
+
+main #msg-list article .person-div .person-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #585d68
+}
+
+main #msg-list article .person-div .person-position {
+    color: rgba(0, 0, 0, 0.3)
+}
+
+main #msg-list article .person-div .right-tag {
+    color: #7f8fa4;
+    font-weight: bold
+}
+
+main #msg-list article .person-div .sculpture {
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex: none
+}
+
+main #msg-list article .person-div .person-info {
+    height: 100%;
+    line-height: 1.4em;
+    flex: 1
+}
+
+main #msg-list article .person-div .right-tag {
+    flex: none
+}
+
+main #sub-main {
+    flex: 1
+}
+
+main #sub-main #msg-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+main #sub-main #msg-head h1 {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 100
+}
+
+main #sub-main #msg-head h1:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background: #1bb934;
+    background-size: cover;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 10px
+}
+
+main #sub-main #msg-head #opbtn-list,
+main #sub-main #msg-head #page-num,
+main #sub-main #msg-head #pre-next {
+    flex: none
+}
+
+main #sub-main ul {
+    font-size: 0
+}
+
+main #sub-main ul li {
+    display: inline-block
+}
+
+main #sub-main #opbtn-list,
+main #sub-main #page-num,
+main #sub-main #pre-next {
+    flex: none
+}
+
+main #sub-main #opbtn-list {
+    padding: 0 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+main #sub-main #page-num {
+    padding: 0 20px;
+    color: #56688a;
+    font-weight: bold
+}
+
+main #sub-main .opbtn {
+    padding: 9px;
+    height: 18px;
+    border-top: 1px solid rgba(34, 44, 60, 0.2);
+    border-bottom: 1px solid rgba(34, 44, 60, 0.2);
+    border-right: 1px solid rgba(34, 44, 60, 0.2)
+}
+
+main #sub-main .opbtn:first-child {
+    border-left: 1px solid rgba(34, 44, 60, 0.2);
+    border-radius: 4px 0 0 4px
+}
+
+main #sub-main .opbtn:last-child {
+    border-radius: 0 4px 4px 0
+}
+
+main #sub-main .opbtn img {
+    width: 18px;
+    height: 18px
+}
+
+main #sub-main #msg-main {
+    height: calc(100% - 70px);
+    overflow: auto
+}
+
+main #sub-main #msg-main>* {
+    padding: 25px 50px 25px 30px
+}
+
+main #sub-main #msg-main article {
+    position: relative
+}
+
+main #sub-main #msg-main article:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+main #sub-main #msg-main article .tag-time {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    text-align: center
+}
+
+main #sub-main #msg-main article .tag-time span {
+    background: #fff;
+    font-size: 14px;
+    color: #7f8fa4;
+    padding: 0 15px
+}
+
+main #sub-main #msg-main #new-msg {
+    border-top: 1px solid rgba(35, 153, 241, 0.5)
+}
+
+main #sub-main #msg-main #new-msg .tag-time span {
+    color: #2399f1
+}
+
+main #sub-main #msg-main section {
+    font-size: 14px;
+    padding-left: 65px;
+    margin-bottom: 20px;
+    position: relative
+}
+
+main #sub-main #msg-main section .person-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #585d68
+}
+
+main #sub-main #msg-main section .person-position {
+    color: #7f8fa4
+}
+
+main #sub-main #msg-main section .right-tag {
+    color: #7f8fa4;
+    font-weight: bold
+}
+
+main #sub-main #msg-main section .person-position {
+    margin-left: 5px
+}
+
+main #sub-main #msg-main section:before {
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+main #sub-main #msg-main .fem-sec:before {
+    content: "";
+    width: 46px;
+    height: 46px;
+    display: block;
+    background: url("image/sculp-fem1.jpg");
+    background-size: cover
+}
+
+main #sub-main #msg-main .ma-sec:before {
+    content: "";
+    width: 46px;
+    height: 46px;
+    display: block;
+    background: url("image/sculp-m1.jpg");
+    background-size: cover
+}
+
+main #sub-main #msg-main .img-list {
+    display: flex;
+    flex-wrap: wrap
+}
+
+main #sub-main #msg-main .img-list li {
+    width: 155px;
+    height: 100px;
+    margin-right: 13px;
+    background-size: cover;
+    border-radius: 3px
+}
+
+main #sub-main #msg-main .img-list li:hover .hover-div {
+    visibility: visible
+}
+
+main #sub-main #msg-main .img-list #lake-img {
+    background-image: url("image/img-lake.jpg")
+}
+
+main #sub-main #msg-main .img-list #ori-img {
+    background-image: url("image/img-ori.jpg")
+}
+
+main #sub-main #msg-main .img-list .hover-div {
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden
+}
+
+main #sub-main #msg-main .img-list .hover-div a {
+    display: block;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin: 25px auto;
+    padding: 17px
+}
+
+main #sub-main #msg-main .img-list .hover-div a img {
+    width: 16px;
+    height: 16px;
+    margin: auto
+}
+
+main #sub-main #msg-main #reply-div {
+    display: flex
+}
+
+main #sub-main #msg-main #reply-div>* {
+    padding: 20px
+}
+
+main #sub-main #msg-main #reply-div a {
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(34, 44, 60, 0.2);
+    border-radius: 3px 0 0 3px
+}
+
+main #sub-main #msg-main #reply-div a img {
+    width: 14px
+}
+
+main #sub-main #msg-main #reply-div input {
+    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: none
+}
+
+/*# sourceMappingURL=style.css.map */
