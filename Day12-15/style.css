@@ -113,13 +113,13 @@ a {
 #main-menu {
     position: relative;
     background-color: #1d2531;
-    padding-bottom: 40px;
     flex: none
 }
 
 #main-menu ul {
-    max-height: 100%;
-    position: relative
+    height: calc(100% - 50px);
+    position: relative;
+    overflow: hidden
 }
 
 #main-menu ul .checked-menu:before {
@@ -483,7 +483,9 @@ main #msg-list article .person-div .right-tag {
 }
 
 main #sub-main {
-    flex: 1
+    flex: 1;
+    min-width: 470px;
+    position: relative
 }
 
 main #sub-main #msg-head {
@@ -567,7 +569,7 @@ main #sub-main .opbtn img {
 }
 
 main #sub-main #msg-main {
-    height: calc(100% - 70px);
+    height: calc(100% - 160px);
     overflow: auto
 }
 
@@ -707,26 +709,31 @@ main #sub-main #msg-main .img-list .hover-div a img {
     margin: auto
 }
 
-main #sub-main #msg-main #reply-div {
-    display: flex
+main #sub-main #reply-div {
+    padding: 10px 50px 25px 30px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0
 }
 
-main #sub-main #msg-main #reply-div>* {
+main #sub-main #reply-div>* {
     padding: 20px
 }
 
-main #sub-main #msg-main #reply-div a {
+main #sub-main #reply-div a {
     width: 14px;
     height: 14px;
     border: 1px solid rgba(34, 44, 60, 0.2);
     border-radius: 3px 0 0 3px
 }
 
-main #sub-main #msg-main #reply-div a img {
+main #sub-main #reply-div a img {
     width: 14px
 }
 
-main #sub-main #msg-main #reply-div input {
+main #sub-main #reply-div input {
     flex: 1;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-left: none
