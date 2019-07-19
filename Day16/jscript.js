@@ -11,6 +11,27 @@ function ShowMain() {
 
     back.style.visibility = 'visible';
     document.getElementById("greet-name").innerHTML = name == "" ? "不愿意透露姓名的陌生人" : name;
+
+    var now = new Date().getHours();
+    var hi;
+    if(4<=now && now<=9){
+        hi="早上好";
+    }else if (10<=now && now<=11) {
+        hi="上午好";
+    }
+    else if(now==12){
+        hi="中午好";
+    }
+    else if(13<=now && now<=18){
+        hi="下午好";
+    }
+    else if(19<=now && now<=22){
+        hi="晚上好";
+    }
+    else{
+        hi="晚安";
+    }
+    document.getElementById("greet-time").innerHTML=hi;
 }
 
 function ShowMore(e) {
