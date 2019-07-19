@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人简历</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="greet-div">
+        <p>Please Print Your Name~</p>
+        <input id="name-text" type="text"><br>
+        <input id="open-btn" type="button" onclick="ShowMain()" value="OK">
+    </div>
+    <div id="back-greet-div">
+        <p>Hello</p>
+        <p id="greet-name"></p>
+    </div>
+    <div id="main-div">
+        <div class="item">
+            <h2 id="myname">I'm Keydew</h2>
+            <span class="label-info">Tel: <span id="telnum">18200001111</span></span>
+            <span class="label-info">Mail:<a href="http://www.baidu.com">papermoon@key.com</a></span>
+        </div>
+        <div class="item">
+            <h2>本科院校</h2>
+            <span class="label-info">纸月亮大学</span>
+        </div>
+        <h2 class="item">项目经验</h2>
+        <div class="projects">
+            <dl>
+                <dt>大作业：网上购物软件<span class="tag-span"><img src="updown.png" onclick="ShowMore(this)" name="shop-online" class="show-more-btn"></span></dt>
+                <dd name="shop-online" class="hide-detail">利用sql server搭建购物网站后台数据库</dd>
+                <dd name="shop-online" class="hide-detail">采用C#.NET制作前台显示界面</dd>
+            </dl>
+            <dl>
+                <dt>WMS仓储物流软件<span class="tag-span"><img src="updown.png" onclick="ShowMore(this)" name="wms-software" class="show-more-btn"></span></dt>
+                <dd name="wms-software" class="hide-detail">分析仓储项目的需求功能要点及逻辑</dd>
+                <dd name="wms-software" class="hide-detail">设计功能具体实现</dd>
+                <dd name="wms-software" class="hide-detail">利用Oracle数据库和C#.Net进行开发</dd>
+            </dl>
+        </div>
+        <h2 class="item">个人爱好</h2>
+        <ul id="hobby-list">
+            <li>手绘<br><a href="javascript:ShowImg()" id="show-img-btn">点点我~</a></li>
+            <li>心理学</li>
+        </ul>
+    </div>
+    <script src="jscript.js"></script>
+</body>
+
+</html>
