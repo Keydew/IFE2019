@@ -10,7 +10,7 @@ function ShowMain() {
     var name = document.getElementById("name-text").value;
 
     back.style.visibility = 'visible';
-    document.getElementById("greet-name").innerHTML = name == "" ? "陌生人" : name;
+    document.getElementById("greet-name").innerHTML = name == "" ? "不願意透露姓名的陌生人" : name;
 }
 
 function ShowMore(e) {
