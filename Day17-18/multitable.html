@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript -- 9×9乘法表</title>
+</head>
+
+<body>
+    <table id="multable">
+    </table>
+    <script>
+    var table = document.getElementById("multable");
+
+    for (var x = 1; x <= 9; x++) {
+        var tr = document.createElement('tr');
+        table.appendChild(tr);
+        for (var y = 1; y <= x; y++) {
+            var str = y + " × " + x + " = " + x * y;
+            var td = document.createElement('td');
+            td.innerHTML = str;
+            tr.appendChild(td);
+        }
+    }
+
+    table.rules = 'all';
+    table.frame = "border";
+    table.cellPadding = "10";
+    </script>
+</body>
+
+</html>
