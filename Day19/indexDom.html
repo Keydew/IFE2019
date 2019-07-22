@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+    </div>
+    <input type="button" onclick="getAllListItem()" value="测试一">
+    <input type="button" onclick="findAllHtmlSpanInOneSection('news-normal')" value="测试二">
+    <input type="button" onclick="findListItem('news-top', 'JS')" value="测试三">
+    <input type="button" onclick="getActiveLinkContent('news-top')" value="测试四">
+    <script>
+    //仅允许使用以下方法和属性
+    //getElementById()
+    //getElementByTagName()
+    //childNodes
+    //parentNode
+
+
+    function getAllListItem() {
+        // 返回页面中所有li标签
+        var eles = document.getElementsByTagName('li');
+        return eles;
+    }
+
+    function findAllHtmlSpanInOneSection(sectionId) {
+        // 返回某个section下所有span中内容为HTML的span标签
+        var spans = document.getElementById(sectionId).getElementsByTagName("span");
+        var eles = new Array();
+        for (var i = 0; i < spans.length; i++) {
+            if (spans[i].innerHTML == "HTML") {
+                eles.push(spans[i]);
+            }
+        }
+        return eles;
+    }
+
+    function findListItem(sectionId, spanCont) {
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+        var lis = document.getElementById(sectionId).getElementsByTagName("li");
+        var eles = new Array();
+        for (var i = 0; i < lis.length; i++) {
+            if (lis[i].getElementsByTagName("span")[0].innerHTML == spanCont) {
+                eles.push(lis[i]);
+            }
+        }
+        return eles;
+    }
+
+    function getActiveLinkContent(sectionId) {
+        // 返回某个section下，class为active的链接中包含的文字内容
+        var as = document.getElementById(sectionId).getElementsByTagName("a");
+        for (var i = 0; i < as.length; i++) {
+            if (as[i].className == "active") {
+                return as[i].innerHTML;
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
