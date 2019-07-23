@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        select {
+            display: none;
+        }
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        #erik-smile{
+        	width:480px;
+        	height:480px;
+        	background-image:url('erik.jpg');
+        }
+    </style>
+</head>
+
+<body>
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+    <p>=============================================================</p>
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+    <select id="school-select">
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+    <select id="company-select">
+        <option>百度</option>
+        <option>爱奇艺</option>
+    </select>
+    <p>==============================================================</p>
+    <ul class="palette">
+        <li style="background-color:crimson"></li>
+        <li style="background-color:bisque"></li>
+        <li style="background-color:blueviolet"></li>
+        <li style="background-color:coral"></li>
+        <li style="background-color:chartreuse"></li>
+        <li style="background-color:darkolivegreen"></li>
+        <li style="background-color:cyan"></li>
+        <li style="background-color:#194738"></li>
+    </ul>
+    <p class="color-picker"></p>
+    <p>==============================================================</p>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <p>==============================================================</p>
+    <p>Erik的笑容动画</p>
+    <div id="erik-smile"></div>
+    <script>
+    //练习一：textbox的各种事件
+    var btn = document.getElementById('submit-btn');
+    var textbox = document.getElementById('name');
+
+    //监听textbox的keyup事件触发
+    textbox.addEventListener('keyup', function(event) {
+        if (event.keyCode == "13") {
+            PrintOut();
+        } else if (event.keyCode == "27") {
+            ClearText();
+        }
+    });
+
+    //输出textbox内容
+    function PrintOut() {
+        console.log(textbox.value);
+    }
+
+    //清空textbox
+    function ClearText() {
+        textbox.value = "";
+    }
+
+    //避免使用内联事件
+    btn.onclick = PrintOut;
+
+    //练习二：单选框选择显示不同select元素
+    var schoollist = document.getElementById('school-select');
+    var companylist = document.getElementById('company-select');
+    var radios = document.querySelectorAll('input[type="radio"][name="status"]');
+
+    for (var i = 0; i < radios.length; i++) {
+        radios[i].onclick = function() {
+            if (this.id == "school") {
+                schoollist.style.display = "inline-block";
+                companylist.style.display = 'none';
+            } else if (this.id == "company") {
+                schoollist.style.display = 'none';
+                companylist.style.display = "inline-block";
+            }
+        }
+    }
+
+    //练习三：通过事件代理实现一组元素的事件绑定
+    var ul = document.getElementsByClassName('palette')[0];
+    var colorpick = document.getElementsByClassName('color-picker')[0];
+
+    ul.onclick = function(e) {
+        if (e.target.tagName.toLowerCase() == "li") {
+            var color = e.target.style.backgroundColor;
+            colorpick.innerHTML = color;
+            colorpick.style.color = color;
+        }
+    }
+
+    //练习四：用JS控制CSS实现淡入淡出
+    var fadediv = document.getElementById('fade-obj');
+    var fadebtn = document.getElementById('fade-btn');
+    var set;
+    fadebtn.onclick = function(e) {
+        fadebtn.disabled = "disabled";
+        if (e.target.innerHTML == "淡出") {
+            set = setInterval(FadeOut, 100);
+        } else {
+            set = setInterval(FadeIn, 100);
+        }
+    }
+
+    function FadeOut() {
+        var opa = (fadediv.style.opacity || 1) - 0.1;
+        fadediv.style.opacity = opa;
+        if (opa == 0) {
+            window.clearInterval(set);
+            fadebtn.innerHTML = "淡入";
+            fadebtn.removeAttribute('disabled');
+        }
+    }
+
+    function FadeIn() {
+        var opa = Number(fadediv.style.opacity) + 0.1;
+        fadediv.style.opacity = opa;
+        if (opa == 1) {
+            window.clearInterval(set);
+            fadebtn.innerHTML = "淡出";
+            fadebtn.removeAttribute('disabled');
+        }
+    }
+
+    //练习五：用JS控制CSS实现动画
+    var y = 0;
+    var t;
+    var ani = setInterval(PosMove, 100);
+    var erik = document.getElementById('erik-smile');
+
+    function PosMove() {
+        if (y == 0) {
+            t = -480;
+        } else if (y == -7680) {
+            t = 480;
+        }
+        y += t;
+
+        erik.style.backgroundPosition = "0px " + y + "px";
+    }
+    </script>
+    </script>
+</body>
+
+</html>
