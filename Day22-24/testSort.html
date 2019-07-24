@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>排序</title>
+</head>
+
+<body>
+    <script>
+    var arr1 = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+    var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+    var arr3 = [
+        [10, 14],
+        [16, 60],
+        [7, 44],
+        [26, 35],
+        [22, 63]
+    ];
+    var arr4 = [{
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }];
+
+    //对arr1从大到小排序
+    function SortDesc() {
+        let ar = arr1;
+        return ar.sort(function(a, b) {
+            if (a > b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
+    }
+
+    //对arr1从小到大排序
+    function SortAsc() {
+        let ar = arr1;
+        return ar.sort(function(a, b) {
+            if (a < b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+
+    //对arr2按a-z排序
+    function SortAtoZ(){
+    	let ar = arr2;
+    	return ar.sort(function(a,b){
+    		if(a.toLowerCase()<b.toLowerCase()){
+    			return -1;
+    		}else{
+    			return 0;
+    		}
+    	});
+    }
+
+    //对arr2按z-a排序
+    function SortZtoA(){
+    	let ar = arr2;
+    	return ar.sort(function(a,b){
+    		if(a.toLowerCase()>b.toLowerCase()){
+    			return -1;
+    		}else{
+    			return 0;
+    		}
+    	})
+    }
+
+    //对arr3按第二个数从大到小的顺序排序
+    function SortSecond(){
+    	let ar = arr3;
+    	return ar.sort(function(a,b){
+    		if(a[1]>b[1]){
+    			return -1;
+    		}else{
+    			return 0;
+    		}
+    	})
+    }
+
+    //对arr4按value值从小到大排序
+    function SortValue(){
+    	let ar=arr4;
+    	return ar.sort(function(a,b){
+    		if(a.value<b.value){
+    			return -1;
+    		}else{
+    			return 0;
+    		}
+    	})
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数字类型</title>
+</head>
+
+<body>
+    <div>
+        <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+        <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+    </div>
+    <div>
+        <button id="btn-judge">判断当前选中的输入框输入内容是否为数字</button>
+        <button id="btn-roundB">把 A 四舍五入为 B 个小数位数的数字</button>
+        <button id="btn-abso">当前选中数字的绝对值</button>
+        <button id="btn-upper">对当前选中的数字进行上舍入</button>
+        <button id="btn-lower">对当前选中的数字进行下舍入</button>
+        <button id="btn-round">把当前选中的数字四舍五入为最接近的整数</button>
+        <button id="btn-max">返回 A 和 B 中的最高值</button>
+        <button id="btn-min">返回 A 和 B 中的最低值</button>
+    </div>
+    <p id="result"></p>
+    <script>
+    let res = document.getElementById('result');
+    let numA = document.getElementById('num-a');
+    let numB = document.getElementById('num-b');
+
+    //判断是否为数字
+    document.getElementById('btn-judge').onclick = function() {
+        let radio = document.querySelector('input[type="radio"][name="math-obj"]:checked');
+        if (!radio || !radio.parentNode.nextSibling.value || isNaN(Number(radio.parentNode.nextSibling.value))) {
+            res.innerHTML = "否";
+        } else {
+            res.innerHTML = "是";
+        }
+    };
+
+    //A四舍五入成B位小数位的数
+    document.getElementById('btn-roundB').onclick = function() {
+        try {
+            let nums = JudgeNum();
+            if (nums[1] < 0 || nums[1] % 1 != 0) {
+                throw "Number B必须输入非负整数";
+            }
+
+            res.innerHTML = nums[0].toFixed(nums[1]);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    };
+
+    //求绝对值
+    document.getElementById('btn-abso').onclick = function() {
+        try {
+            let num = JudgeCheck();
+            res.innerHTML = Math.abs(num);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    };
+
+    //上舍入
+    document.getElementById('btn-upper').onclick = function() {
+        try {
+            let num = JudgeCheck();
+            res.innerHTML = Math.ceil(num);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    };
+
+    //下舍入
+    document.getElementById('btn-lower').onclick = function() {
+        try {
+            let num = JudgeCheck();
+            res.innerHTML = Math.floor(num);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    };
+
+    //四舍五入
+    document.getElementById('btn-round').onclick = function() {
+        try {
+            let num = JudgeCheck();
+            res.innerHTML = Math.round(num);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    };
+
+    //求最大值
+    document.getElementById('btn-max').onclick = function() {
+        try {
+            let nums = JudgeNum();
+            res.innerHTML = Math.max(nums[0], nums[1]);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    }
+
+    //求最小值
+    document.getElementById('btn-min').onclick = function() {
+        try {
+            let nums = JudgeNum();
+            res.innerHTML = Math.min(nums[0], nums[1]);
+        } catch (e) {
+            res.innerHTML = e;
+        }
+    }
+
+    //校验选中框是否为数字
+    function JudgeCheck() {
+        let radio = document.querySelector('input[type="radio"][name="math-obj"]:checked');
+        if(!radio){
+            throw "请先选择一个文本框";
+        }
+        if(!radio.parentNode.nextSibling.value){
+            throw "选择的文本框无内容"
+        }
+
+        let num = Number(radio.parentNode.nextSibling.value);
+        if (isNaN(num)) {
+            throw "选中的文本框只能输入数字";
+        }
+        return num;
+
+    }
+
+    //校验两个文本框输入是否为数字
+    function JudgeNum() {
+        let num1 = Number(numA.value);
+        let num2 = Number(numB.value);
+        if (isNaN(num1)||!numA.value) {
+            throw "Number A必须输入数字";
+        }
+        if (isNaN(num2)||!numB.value) {
+            throw "Number B必须输入数字";
+        }
+
+        return new Array(num1, num2);
+    }
+    </script>
+</body>
+
+</html>
