@@ -36,7 +36,7 @@
         [8, "Area2-2-1", 6],
     ];
 
-    //对象转换为数组
+    //一：对象转换为数组
     function ObjToArr() {
         let arr = new Array();
         for (let obj in scoreObject) {
@@ -50,36 +50,70 @@
         return arr;
     }
 
-    //数组转换为对象
+    //二：数组转换为对象
     var menu = menuArr;
 
+    //方法一：类似广度搜索（自己想的）
+    //时间复杂度过大
     function ArrToObj() {
-        //类似广度搜索
-        //时间复杂度过大
         let obj = {};
         return AddObj(obj, -1, 0);
-
     }
 
     //根据父结点ID寻找添加子结点
-    //indexparid:父结点ID
+    //parid:父结点ID
     //start:数组查询开始位置
     function AddObj(obj, parid, start) {
         let i = start;
         while (i < menu.length) {
-            if (menu[i][2] == parid) {
+            let curid = menu[i][0],
+                curnme = menu[i][1],
+                preid = menu[i][2];
+            if (preid == parid) {
                 if (!obj) {
                     obj = {};
                 }
-                obj[menu[i][0]] = {};
-                obj[menu[i][0]].name = menu[i][1];
-                if (AddObj(obj[menu[i][0]].subMenu, menu[i][0], i + 1)) {
-                    obj[menu[i][0]].subMenu = AddObj(obj[menu[i][0]].subMenu, menu[i][0], i + 1);
+                obj[curid] = {};
+                obj[curid].name = curnme;
+                if (AddObj(obj[curid].subMenu, curid, i + 1)) {
+                    obj[curid].subMenu = AddObj(obj[curid].subMenu, curid, i + 1);
                 }
             }
             i++;
         }
         return obj;
+    }
+
+    //方法二：从后向前生成树（参考百度）
+    //时间复杂度比前者小
+    function AscendTree() {
+        let nodes = toObjArr();
+
+        for (let i = menuArr.length - 1; i >= 0; i--) {
+            let curid = menuArr[i][0],
+                preid = menuArr[i][2];
+
+            //从后向前遍历，所以父结点一定就是nodes对象的子结点（而不是后代结点）
+            if (preid != -1) {
+                if (!nodes[preid].subMenu) {
+                    nodes[preid].subMenu = {};
+                }
+                nodes[preid].subMenu[curid] = nodes[curid];
+                delete nodes[curid];
+            }
+
+        }
+        return nodes;
+    }
+
+    //先将数组转为各元素平级的对象（相当于所有结点都是nodes的子结点）
+    function toObjArr() {
+        let nodes = {};
+        for (let i in menuArr) {
+            nodes[menuArr[i][0]] = {};
+            nodes[menuArr[i][0]].name = menuArr[i][1];
+        }
+        return nodes;
     }
     </script>
 </body>
