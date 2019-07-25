@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数相关</title>
+</head>
+
+<body>
+    <p id="clock-Chi"></p>
+    <p id="clock-Eng"></p>
+    <p>===========================================================================</p>
+    <select id="year-select">
+    </select>
+    <select id="month-select">
+    </select>
+    <select id="day-select">
+    </select>
+    <select id="hour-select">
+    </select>
+    <select id="minute-select">
+    </select>
+    <select id="second-select">
+    </select>
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <script>
+    function Go() {
+        console.log("Go");
+    }
+
+    function GoSteps(n) {
+        n = typeof(n) != "undefined" ? n : 1; //参数值缺省默认1
+        n = Number(n); //转换为数字类型
+        n = isNaN(n) ? 0 : n; //非数字默认为0
+        n = n < 0 ? 0 : n; //负数默认为0
+        n = Math.floor(n); //向下取整
+        while (n--) {
+            Go();
+        }
+    }
+
+    //练习一：Go函数
+    function GoTest() {
+        GoSteps(10); // Go 10次
+        GoSteps(1); // Go 1次
+        GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+        GoSteps(0); // 0次
+        GoSteps(-1); // 0次
+        GoSteps(1.4); // Go 1次
+        GoSteps(1.6); // Go 1次
+        GoSteps(-1); // 0次
+        GoSteps(true); // Go 1次
+        GoSteps(false); // 0次
+        GoSteps("Test"); // 0次
+        GoSteps(NaN); // 0次
+        GoSteps(null); // 0次
+    }
+
+    //练习二：时钟
+    //显示格式：YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+    var clockC = document.getElementById('clock-Chi');
+    var clockE = document.getElementById('clock-Eng');
+
+    function UpdateShowTime() {
+        let d = new Date();
+        let year = d.getFullYear(),
+            month = SupBit(d.getMonth() + 1, 2),
+            da = SupBit(d.getDate(), 2),
+            day = d.getDay(),
+            hour = d.getHours(),
+            min = SupBit(d.getMinutes(), 2),
+            sec = SupBit(d.getSeconds(), 2);
+        clockC.innerHTML = JustifyDateC(year, month, da, day, hour, min, sec);
+        clockE.innerHTML = JustifyDateE(year, month, da, day, hour, min, sec);
+
+    }
+
+    //拼接显示的日期(中文格式)
+    function JustifyDateC(year, month, da, day, hour, min, sec) {
+        let str = "";
+        hour = SupBit(hour, 2);
+        day = TransformDay(day, 0);
+        str += year.toString() + "年";
+        str += month.toString() + "月";
+        str += da.toString() + "日";
+        str += "星期" + day.toString();
+        str += " " + hour.toString() + ":" + min.toString() + ":" + sec.toString();
+        return str;
+    }
+
+    //拼接显示的日期（英文格式）
+    function JustifyDateE(year, month, da, day, hour, min, sec) {
+        let str = "";
+        let noon = "";
+        if (hour > 12) {
+            noon = "PM";
+            hour = SupBit(hour - 12, 2);
+        } else {
+            noon = "AM";
+            hour = SupBit(hour, 2);
+        }
+        day = TransformDay(day, 1);
+
+        str += year.toString() + "-";
+        str += month.toString() + "-";
+        str += da.toString() + " ";
+        str += day.toString();
+        str += " " + hour.toString() + ":" + min.toString() + ":" + sec.toString() + " " + noon;
+        return str;
+    }
+
+    //补充位数
+    function SupBit(num, bit) {
+        if (Number(bit) % 1 != 0 || Number(bit) <= 0) {
+            console.log("保留位数必须为正整数");
+            return;
+        }
+        if (Number(num) % 1 != 0 || Number(num) < 0) {
+            console.log("时间参数必须为正整数");
+            return;
+        }
+
+        num = num.toString();
+        if (num.length >= bit) {
+            return num;
+        } else {
+            let i = bit - num.length;
+            while (i--) {
+                num = "0" + num;
+            }
+            return num;
+        }
+    }
+
+    //根据getDay()返回值返回星期几
+    //type:0-中文,1-英文
+    function TransformDay(index, type) {
+        let name = "";
+        switch (index) {
+            case 0:
+                name = type == 0 ? "天" : "Sunday";
+                break;
+            case 1:
+                name = type == 0 ? "一" : "Monday";
+                break;
+            case 2:
+                name = type == 0 ? "二" : "Tuesday";
+                break;
+            case 3:
+                name = type == 0 ? "三" : "Wednesday";
+                break;
+            case 4:
+                name = type == 0 ? "四" : "Thursday";
+                break;
+            case 5:
+                name = type == 0 ? "五" : "Friday";
+                break;
+            case 6:
+                name = type == 0 ? "六" : "Saturday";
+                break;
+            default:
+                console.log("周名参数不正确");
+                break;
+        }
+        return name;
+    }
+
+    //练习三：根据选择计算时间差
+    //生成各种select的选项
+    var yearSel = document.getElementById('year-select');
+    var monthSel = document.getElementById('month-select');
+    var daySel = document.getElementById('day-select');
+    var hourSel = document.getElementById('hour-select');
+    var minSel = document.getElementById('minute-select');
+    var secSel = document.getElementById('second-select');
+    var result = document.getElementById('result-wrapper');
+    OutOptions(yearSel, 33, 2000);
+    OutOptions(monthSel, 12, 1);
+    OutOptions(daySel, 31, 1);
+    OutOptions(hourSel, 24, 0);
+    OutOptions(minSel, 60, 0);
+    OutOptions(secSel, 60, 0);
+
+    yearSel.onchange = function() {
+        ChangeDaySel();
+        UpdateShowWrap();
+    }
+
+    monthSel.onchange = function() {
+        ChangeDaySel();
+        UpdateShowWrap();
+    }
+
+    daySel.onchange = function() {
+        UpdateShowWrap();
+    }
+
+    hourSel.onchange = function() {
+        UpdateShowWrap();
+    }
+
+    minSel.onchange = function() {
+        UpdateShowWrap();
+    }
+
+    secSel.onchange = function() {
+        UpdateShowWrap();
+    }
+
+    //根据当前选中的年-月，重新加载日期选项
+    function ChangeDaySel() {
+        let day = daySel.value;
+        let month = monthSel.value;
+        if (month == "2") {
+            if (Number(yearSel.value) % 4 == 0) {
+                OutOptions(daySel, 29, 1);
+            } else {
+                OutOptions(daySel, 28, 1);
+            }
+        } else if (month == "4" || month == "6" || month == "9" || month == "11") {
+            OutOptions(daySel, 30, 1);
+        } else {
+            OutOptions(daySel, 31, 1);
+        }
+
+        daySel.value = day;
+        if (!daySel.value) {
+            daySel.value = daySel.lastChild.value;
+        }
+    }
+
+    //自动生成select元素的选项（值都为整数）
+    //num:选项个数
+    //ini:选项初始值
+    function OutOptions(sel, num, ini) {
+        while (sel.hasChildNodes()) {
+            sel.removeChild(sel.firstChild);
+        }
+        for (let i = 0; i < num; i++) {
+            let val = Number(ini) + Number(i)
+            let node = document.createElement("option");
+            node.innerHTML = val;
+            node.value = val;
+            sel.appendChild(node);
+        }
+    }
+
+    //更新result-wrapper显示语句
+    function UpdateShowWrap() {
+        let year = yearSel.value,
+            month = SupBit(monthSel.value, 2),
+            da = SupBit(daySel.value, 2),
+            hour = SupBit(hourSel.value, 2),
+            min = SupBit(minSel.value, 2),
+            sec = SupBit(secSel.value, 2);
+        result.innerHTML = GetShowStr(year, month, da, hour, min, sec);
+    }
+
+    //给定年-月-日-小时-分-秒，获取“现在距离...还有/已经过去...”格式语句
+    function GetShowStr(year, month, da, hour, min, sec) {
+        let str = "";
+        let desDate = GetDateObj(year, month, da, hour, min, sec);
+        let day = desDate.getDay();
+        let desStr = JustifyDateC(year, month, da, day, hour, min, sec);
+        let defStr = TransDeficit(desDate, new Date());
+        if (!defStr) {
+            str = "现在正是" + desStr;
+        } else {
+            str += "现在距离";
+            str += desStr + "";
+            str += defStr;
+        }
+        return str;
+    }
+
+    //给定年-月-日-小时-分-秒，返回Date对象
+    function GetDateObj(year, month, da, hour, min, sec) {
+        let str = "";
+        str += year.toString() + "-";
+        str += month.toString() + "-";
+        str += da.toString() + "T";
+        str += hour.toString() + ":";
+        str += min.toString() + ":";
+        str += sec.toString();
+        return new Date(str);
+    }
+
+    //得到当前时间和目标时间的差异语句
+    function TransDeficit(desDate, curDate) {
+        let str = "";
+
+        let def = desDate.getTime() - curDate.getTime();
+        //毫秒差总是不会恰好为0
+        if (Math.abs(def) < 1000) {
+            return 0;
+        } else if (def < 0) {
+            str += "已经过去";
+            def = Math.abs(def);
+        } else {
+            str += "还有";
+        }
+
+        str += TimeToJust(def);
+        return str;
+    }
+
+    //将时间差（毫秒）转换为天-小时-分-秒格式语句
+    function TimeToJust(def) {
+        let str = "";
+        let days = Math.floor(def / (1000 * 60 * 60 * 24));
+        def = def % (1000 * 60 * 60 * 24);
+        let hours = Math.floor(def / (1000 * 60 * 60));
+        def = def % (1000 * 60 * 60);
+        let mins = Math.floor(def / (1000 * 60));
+        def = def % (1000 * 60);
+        let secs = Math.floor(def / 1000);
+
+        str += " " + days.toString() + " 天";
+        str += " " + hours.toString() + " 小时";
+        str += " " + mins.toString() + " 分钟";
+        str += " " + secs.toString() + " 秒";
+        return str;
+    }
+
+    //设置一个interval，上述方法公用
+    setInterval(Timer, 1000);
+
+    function Timer() {
+        UpdateShowTime();
+        UpdateShowWrap();
+    }
+    </script>
+</body>
+
+</html>
