@@ -77,18 +77,22 @@
             }
         } else if (e.keyCode == "38") {
             //上
+            ul.childNodes[nowSelectIndex].classList.remove('select');
             if (nowSelectIndex > 0) {
-                ul.childNodes[nowSelectIndex].classList.remove('select');
                 nowSelectIndex -= 1;
-                ul.childNodes[nowSelectIndex].classList.add('select');
+            } else {
+                nowSelectIndex = ul.childNodes.length - 1;
             }
+            ul.childNodes[nowSelectIndex].classList.add('select');
         } else if (e.keyCode == "40") {
             //下
+            ul.childNodes[nowSelectIndex].classList.remove('select');
             if (nowSelectIndex < ul.childNodes.length - 1) {
-                ul.childNodes[nowSelectIndex].classList.remove('select');
                 nowSelectIndex += 1;
-                ul.childNodes[nowSelectIndex].classList.add('select');
+            } else {
+                nowSelectIndex = 0;
             }
+            ul.childNodes[nowSelectIndex].classList.add('select');
         } else if (e.keyCode == "27") {
             tb.select();
         }
