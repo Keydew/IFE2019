@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #email-input{
+    		height:40px;
+    		width:200px;
+    		box-sizing: border-box;
+    		border:1px solid rgba(0,0,0,.4);
+    	}
+    	.email-sug{
+    		list-style-type: none;
+    		padding:0;
+    		margin:0;
+    		width:200px;
+    		box-sizing: border-box;
+    		border:1px solid rgba(0,0,0,.4);
+    		border-top:none;
+    		color:rgba(0,0,0,.4);
+    		display: none;
+    	}
+
+    	.email-sug li{
+    		height:30px;
+    		line-height: 30px;
+    		font-size:14px;
+    		cursor:pointer;
+    	}
+
+    	.email-sug li:hover{
+    		background-color:pink;
+    	}
+
+    	.email-sug li.select{
+    		background-color:#C2DEF3;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script>
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    var tb = document.getElementById('email-input');
+    var ul = document.getElementById('email-sug-wrapper');
+    var nowSelectIndex = 0;
+    tb.focus();
+
+    //监听用户输入事件
+    tb.oninput = function() {
+        ToggleText();
+    };
+
+    //监听鼠标点击事件
+    ul.onclick = function(e) {
+        if (e.target.tagName.toLowerCase() == "li") {
+            tb.value = htmlDecode(e.target.innerHTML);
+            HideWrap();
+            tb.focus();
+        }
+    }
+
+    //监听键盘输入事件
+    tb.onkeydown = function(e) {
+        if (e.keyCode == "13") {
+            //回车把选择项输入文本
+            if (ul.childNodes[nowSelectIndex]) {
+                let li = ul.childNodes[nowSelectIndex];
+                tb.value = htmlDecode(li.innerHTML);
+                HideWrap();
+            }
+        } else if (e.keyCode == "38") {
+            //上
+            if (nowSelectIndex > 0) {
+                ul.childNodes[nowSelectIndex].classList.remove('select');
+                nowSelectIndex -= 1;
+                ul.childNodes[nowSelectIndex].classList.add('select');
+            }
+        } else if (e.keyCode == "40") {
+            //下
+            if (nowSelectIndex < ul.childNodes.length - 1) {
+                ul.childNodes[nowSelectIndex].classList.remove('select');
+                nowSelectIndex += 1;
+                ul.childNodes[nowSelectIndex].classList.add('select');
+            }
+        } else if (e.keyCode == "27") {
+            tb.select();
+        }
+    }
+
+    //获取用户输入
+    function GetInput() {
+        return tb.value.trim();
+    }
+
+    //获取提示内容，放入列表
+    function ShowText() {
+    	let nodes = GetShowHtml()
+        for(let i in nodes){
+        	ul.appendChild(nodes[i]);
+        }
+    }
+
+    //重置选择索引
+    function InitSelect() {
+        nowSelectIndex = 0;
+    }
+
+    //生成提示内容
+    function GetShowHtml() {
+        let lis = new Array(),
+            lispost = new Array(),
+            text = GetInput(),
+            post = "";
+        
+        if (text.indexOf("@") > -1) {
+            post = text.slice(text.indexOf("@") + 1);
+            text = text.slice(0, text.indexOf("@"));
+        }
+        for (let i in postfixList) {
+            let val = text + "@" + postfixList[i];
+            let node = document.createElement("li");
+            node.innerHTML = val;
+            if (postfixList[i].indexOf(post) == 0) {
+                lispost.push(node);
+            }
+            lis.push(node);
+        }
+
+        nodes=lispost.length > 0 ? lispost : lis;
+        nodes[nowSelectIndex].classList.add("select");
+        return nodes;
+    }
+
+    //判断文本是否为空，控制显示/隐藏
+    function ToggleText() {
+    	ul.innerHTML="";
+    	InitSelect();
+        if (GetInput()) {
+            ShowText();
+            ShowWrap();
+        } else {
+            HideWrap();
+        }
+    }
+
+    //显示email-sug-wrapper
+    function ShowWrap() {
+        ul.style.display = 'block';
+    }
+
+    //隐藏email-sug-wrapper
+    function HideWrap() {
+        ul.innerHTML="";
+        ul.style.display = "none";
+    }
+
+    //转义
+    function htmlEncode(str) {
+        if (str.length == 0) {
+            return "";
+        } else {
+            str = str.replace(/</g, "&lt;");
+            str = str.replace(/>/g, "&gt;");
+            return str;
+        }
+    }
+
+    //反转义
+    function htmlDecode(str) {
+        if (str.length == 0) {
+            return "0";
+        } else {
+            str = str.replace(/&lt;/g, "<");
+            str = str.replace(/&gt;/g, ">");
+            return str;
+        }
+    }
+    </script>
+</body>
+
+</html>
