@@ -1,5 +1,5 @@
 var colorSeq = ['steelblue', 'indianred', 'teal', 'sandybrown', 'plum', 'skyblue', 
-				'coral','darkslateblue','darkolivegreen','hotpink','gray','gold'];
+				'coral','darkslateblue','darkolivegreen'];
 
 var lineChart = {
     rowArr: null,
