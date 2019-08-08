@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据报表</title>
+    <script src="JS/ife31data.js"></script>
+    <script src="JS/bar.js"></script>
+    <script src="JS/line.js"></script>
+    <script src="JS/table.js"></script>
+    <script src="JS/checkbox.js"></script>
+    <style>
+    .check-wrap {
+        border-bottom: 1px solid #C5D2D9;
+        height: 40px;
+    }
+
+    .check-wrap label {
+        margin: 5px 10px;
+        line-height: 40px;
+    }
+
+    .check-wrap label:last-child {
+        border-left: 1px solid #C5D2D9;
+    }
+
+    #table-wrapper {
+        margin: 20px;
+    }
+
+    #table-wrapper tr:hover{
+        background-color:rgba(0,0,0,.1);
+    }
+
+    #bar-wrapper,
+    #line-wrapper {
+        display: inline-block;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="region-check-wrapper" class="check-wrap"></div>
+    <div id="product-check-wrapper" class="check-wrap"></div>
+    <div id="table-wrapper"></div>
+    <div id="bar-wrapper"></div>
+    <div id="line-wrapper"></div>
+    <script src="JS/app.js"></script>
+</body>
+
+</html>
