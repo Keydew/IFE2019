@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="300px">
+    	<path d="M 100 100 Q 120 150 100 200" stroke="darkolivegreen" stroke-width="5px" stroke-linecap="round" fill="transparent"/>
+    	<path d="M 100 200 A 100 50 0 0 1 160 160 A 100 50 0 0 1 100 200" fill="url(#linearLeaf)"/>
+    	<path d="M 100 90 A 10 20 -30 1 0 91.5 95 A 10 20 -90 1 0 91.5 105 A 10 20 -150 1 0 100 110 A 10 20 150 1 0 108.5 105 A 10 20 90 1 0 108.5 95 A 10 20 30 1 0 100 90" fill="url(#radialFlower)"/>
+        <circle cx="100" cy="100" r="10" fill="lightyellow"/>
+        <defs>
+        	<radialGradient id="radialFlower">
+        		<stop offSet="0%" stop-color="cornflowerblue"/>
+        		<stop offset="90%" stop-color="lightblue"/>
+        	</radialGradient>
+        	<linearGradient id="linearLeaf" x1="0.5" x2="0.7" y1="0.7" y2="0.1">
+        		<stop offset="0%" stop-color="darkolivegreen"/>
+        		<stop offset="100%" stop-color="yellowgreen"/>
+        	</linearGradient>
+        </defs>
+    </svg>
+</body>
+
+</html>
