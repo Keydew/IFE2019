@@ -15,8 +15,8 @@ var barChart = {
         for (let i = 0; i < highArr.length; i++) {
             this.svg += '<rect x="' + (x + i * subWidth) + '" y="' + (horizon - highArr[i]) +
                 '" width="' + subWidth + '" height="' + highArr[i] + '" fill="' + colorSeq[iArr[i]] + '"/>';
-            this.svg += '<text x="' + (x + barWidth / 2) + '" y="' + (horizon + 20) + '" text-anchor="middle">' + (i + 1) + '月</text>'
         }
+        this.svg += '<text x="' + (x + barWidth / 2) + '" y="' + (horizon + 20) + '" text-anchor="middle">' + (index + 1) + '月</text>'
     },
 
     //初始化柱状图工具
