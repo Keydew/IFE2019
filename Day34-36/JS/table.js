@@ -57,7 +57,7 @@ function FormChart(data, cols, fval) {
         scol = cols[1].code; //第二列
 
     //表头
-    html += '<table frame="box" rules="all" cellpadding="5px"><tr>';
+    html += '<table frame="box" rules="all"><tr>';
     html += '<th>' + cols[0].name + '</th><th>' + cols[1].name + '</th>';
     for (let i = 1; i <= 12; i++) {
         html += '<th>' + i + '月</th>';
@@ -91,23 +91,26 @@ function FormChart(data, cols, fval) {
 
     tableWrap.innerHTML = html;
     lineChart.Init(GetSaleArr(GetSelectArr()), lineWrap).PaintTable();
+    barChart.Init(GetSaleArr(GetSelectArr()), barWrap).PaintBar();
 
     //表格鼠标移入事件，只画出当前行的折线图
     tableWrap.childNodes[0].onmouseover = function(e) {
         if (e.target.tagName.toLowerCase() == "td") {
             let tr = e.target.parentNode;
             let index = 0;
-            while(tr.previousSibling!=null){
+            while (tr.previousSibling != null) {
                 index++;
-                tr=tr.previousSibling;
+                tr = tr.previousSibling;
             }
-            lineChart.PaintByData([index-1]);
+            lineChart.PaintByData([index - 1]);
+            barChart.PaintBarByData([index-1]);
         }
     };
 
     //表格鼠标移出事件，画出表格所有数据的折线图
     tableWrap.childNodes[0].onmouseout = function(e) {
         lineChart.PaintTable();
+        barChart.PaintBar();
     }
 }
 

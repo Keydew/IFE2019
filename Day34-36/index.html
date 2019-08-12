@@ -4,35 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>数据报表</title>
-    <script type="text/javascript" src="JS/ife31data.js"></script>
-    <script type="text/javascript" src="JS/bar.js"></script>
-    <script type="text/javascript" src="JS/line.js"></script>
-    <script type="text/javascript" src="JS/table.js"></script>
-    <script type="text/javascript" src="JS/checkbox.js"></script>
+    <script src="JS/ife31data.js"></script>
+    <script src="JS/bar.js"></script>
+    <script src="JS/line.js"></script>
+    <script src="JS/table.js"></script>
+    <script src="JS/checkbox.js"></script>
     <style>
+    *{
+        margin:0;
+        padding: 0;
+        font-size:14px;
+    }
     .check-wrap {
         border-bottom: 1px solid #C5D2D9;
-        height: 40px;
+        height: 30px;
     }
 
     .check-wrap label {
         margin: 5px 10px;
-        line-height: 40px;
+        line-height: 30px;
     }
 
     .check-wrap label:last-child {
         border-left: 1px solid #C5D2D9;
+        padding-left:10px;
     }
 
     #table-wrapper {
         margin: 20px;
+        display: inline-block;
+        vertical-align: top;
     }
 
-    #table-wrapper tr:hover{
+    #table-wrapper tr:not(:first-of-type):hover{
         background-color:rgba(0,0,0,.1);
     }
 
-    #bar-wrapper,
+    #table-wrapper td{
+        padding: 3px 10px;
+    }
+
     #line-wrapper {
         display: inline-block;
     }
@@ -43,9 +54,9 @@
     <div id="region-check-wrapper" class="check-wrap"></div>
     <div id="product-check-wrapper" class="check-wrap"></div>
     <div id="table-wrapper"></div>
-    <div id="bar-wrapper"></div>
     <div id="line-wrapper"></div>
-    <script type="text/javascript" src="JS/app.js"></script>
+    <div id="bar-wrapper"></div>
+    <script src="JS/app.js"></script>
 </body>
 
 </html>
