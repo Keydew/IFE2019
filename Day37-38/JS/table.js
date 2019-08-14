@@ -215,6 +215,7 @@
                         edit += '<a href="javascript:void(0);" id="ok-btn" class="edit-btn">√</a>';
                         edit += '<a href="javascript:void(0);" id="cancel-btn" class="edit-btn">×</a>';
                         e.target.innerHTML = edit;
+                        document.getElementById('edit-input').focus();
 
                         //取消编辑
                         document.getElementById('cancel-btn').onclick = function(event) {
