@@ -3,39 +3,6 @@
         this.wrap = wrap;
     }
 
-    //获取表单选择项相应数组数据
-    function GetSelectArr() {
-        let data = [];
-        let regions = document.querySelectorAll('#region-check-wrapper input[data-checktype="one"]:checked'),
-            products = document.querySelectorAll('#product-check-wrapper input[data-checktype="one"]:checked');
-        let lsstr = localStorage.getItem("saleData");
-        for (let i = 0; i < regions.length; i++) {
-            for (let j = 0; j < products.length; j++) {
-                data.push(GetItemObj(regions[i].value, products[j].value, lsstr));
-            }
-        }
-        return data;
-    }
-
-    //获取单行的来源数据（先LocalStorage后JS文件）
-    function GetItemObj(region, product, lsstr) {
-        if (lsstr) {
-            let lsdata = JSON.parse(lsstr);
-            for (let i in lsdata) {
-                if (lsdata[i].region == region && lsdata[i].product == product) {
-                    return lsdata[i];
-                }
-            }
-        }
-
-        for (let i = 0; i < sourceData.length; i++) {
-            if (sourceData[i].region == region && sourceData[i].product == product) {
-                return sourceData[i];
-            }
-        }
-
-    }
-
     //获取销量数组
     function GetSaleArr(data) {
         let saleArr = [];
@@ -101,7 +68,7 @@
             for (let i = 0; i < fchecks.length; i++) {
                 fval.push(fchecks[i].value);
             }
-            this.FormChart(GetSelectArr(), fval, this.wrap);
+            this.FormChart(this.GetSelectArr(), fval, this.wrap);
 
             return this;
         },
@@ -153,12 +120,12 @@
 
             wrap.innerHTML = html;
             let line = new lineChart({
-                data: GetSaleArr(GetSelectArr()),
+                data: GetSaleArr(this.GetSelectArr()),
                 wrap: lineWrap,
             });
             line.PaintTable();
             let bar = new barChart({
-                data: GetSaleArr(GetSelectArr()),
+                data: GetSaleArr(this.GetSelectArr()),
                 wrap: barWrap,
                 width: 1100
             });
@@ -215,7 +182,7 @@
                         edit += '<a href="javascript:void(0);" id="ok-btn" class="edit-btn">√</a>';
                         edit += '<a href="javascript:void(0);" id="cancel-btn" class="edit-btn">×</a>';
                         e.target.innerHTML = edit;
-                        document.getElementById('edit-input').select();
+                        document.getElementById('edit-input').focus();
 
                         //取消编辑
                         document.getElementById('cancel-btn').onclick = function(event) {
@@ -253,6 +220,37 @@
                     if (!Number(num)) {
                         alert("输入的不是数字");
                     }
+                }
+            }
+        },
+        //获取表单选择项相应数组数据
+        GetSelectArr: function() {
+            let data = [];
+            let fcols = document.querySelectorAll('#' + this.cols[0].code + '-check-wrapper input[data-checktype="one"]:checked'),
+                scols = document.querySelectorAll('#' + this.cols[1].code + '-check-wrapper input[data-checktype="one"]:checked');
+            let lsstr = localStorage.getItem("saleData");
+            for (let i = 0; i < fcols.length; i++) {
+                for (let j = 0; j < scols.length; j++) {
+                    data.push(this.GetItemObj(fcols[i].value, scols[j].value, lsstr));
+                }
+            }
+            return data;
+        },
+
+        //获取单行的来源数据（先LocalStorage后JS文件）
+        GetItemObj: function(fvalue, svalue, lsstr) {
+            if (lsstr) {
+                let lsdata = JSON.parse(lsstr);
+                for (let i in lsdata) {
+                    if (lsdata[i][this.cols[0].code] == fvalue && lsdata[i][this.cols[1].code] == svalue) {
+                        return lsdata[i];
+                    }
+                }
+            }
+
+            for (let i = 0; i < sourceData.length; i++) {
+                if (sourceData[i][this.cols[0].code] == fvalue && sourceData[i][this.cols[1].code] == svalue) {
+                    return sourceData[i];
                 }
             }
         },
