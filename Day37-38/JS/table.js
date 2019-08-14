@@ -79,6 +79,7 @@
         } else {
             td.innerHTML = value;
             td.classList.remove("edit-td");
+
         }
     }
 
@@ -109,11 +110,13 @@
         //data:需要呈现的数组
         //cols:第一第二列
         //fval:第一列选择值
-        FormChart(data, fval, wrap) {
+        FormChart: function(data, fval, wrap) {
             let html = ""; //返回的表格html内容
 
             let fcol = this.cols[0].code, //第一列
                 scol = this.cols[1].code; //第二列
+
+            let tb = this;
 
             //表头
             html += '<table frame="box" rules="all"><tr>';
@@ -230,6 +233,7 @@
                                 RemoveEdit(e.target); //Esc取消
                             } else if (event.keyCode == "13") {
                                 SaveEdit(e.target); //Enter确认
+                                tb.SaveLS();
                             }
                         }
                     }
