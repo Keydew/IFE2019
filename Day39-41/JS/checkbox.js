@@ -1,20 +1,25 @@
 ! function() {
     var checklist = function() {};
 
-    //取消选中时删除相应hash
+    //取消选中时修改state
     function CancelCheckHash(cb) {
-        let arr = decodeURIComponent(location.hash).split("#");
+        let str = decodeURIComponent(location.href.slice(location.href.indexOf('?') + 1));
+
+        let arr = str.split('&');
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] == cb.value) {
                 arr.splice(i, 1);
             }
         }
-        location.hash = arr.join('#');
+        history.pushState(null, null, '?'+arr.join('&'));
     }
 
-    //选中后修改hash
+    //选中后修改state
     function CheckHash(cb) {
-        location.hash += '#' + cb.value;
+        let str = decodeURIComponent(location.href.slice(location.href.indexOf('?') + 1));
+        str += "&" + cb.value;
+
+        history.pushState(null, null, '?'+str);
     }
 
     checklist.prototype = {
