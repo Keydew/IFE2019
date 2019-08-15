@@ -1,27 +1,6 @@
 ! function() {
     var checklist = function() {};
 
-    //取消选中时修改state
-    function CancelCheckHash(cb) {
-        let str = decodeURIComponent(location.href.slice(location.href.indexOf('?') + 1));
-
-        let arr = str.split('&');
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] == cb.value) {
-                arr.splice(i, 1);
-            }
-        }
-        history.pushState(null, null, '?'+arr.join('&'));
-    }
-
-    //选中后修改state
-    function CheckHash(cb) {
-        let str = decodeURIComponent(location.href.slice(location.href.indexOf('?') + 1));
-        str += "&" + cb.value;
-
-        history.pushState(null, null, '?'+str);
-    }
-
     checklist.prototype = {
         //动态生成复选框
         FormCheckWrap: function(wrap, checkArr) {
